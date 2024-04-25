@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class TUI{
+    Scanner sc = new Scanner(System.in);
+
     public static void gameMenu() {
         System.out.println("Benvingut al joc!");
         System.out.println("1. Nova partida");
@@ -27,4 +31,3 @@ public class TUI{
         System.out.println("Opció invàlida. Torna a intentar.");
     }
 }
-
