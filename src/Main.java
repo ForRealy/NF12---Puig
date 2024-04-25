@@ -3,6 +3,7 @@ public class Main{
 
         TUI.mostrarMenu();
         TUI.mostrarTaulell();
+        Joc.novaPartida();
     }
 }
 

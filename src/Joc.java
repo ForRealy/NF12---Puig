@@ -12,7 +12,6 @@ public class Joc {
     short torn;
 
     public static void novaPartida(){}
-
     public static void jugar(){}
     public static void jugadaGuanyadora(){}
 }
