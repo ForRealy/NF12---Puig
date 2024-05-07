@@ -1,4 +1,6 @@
 public class Joc {
+    public Object test;
+
     public char getTaulell() {
         return taulell;
     }
@@ -11,10 +13,16 @@ public class Joc {
 
     private short torn;
 
-    public void novaPartida(){
-        torn = 1;
+    public void novaPartida() {
+        throw new UnsupportedOperationException();
     }
-    public void jugar(){}
-    public void jugadaGuanyadora(){}
+
+    public void jugar() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void jugadaGuanyadora() {
+        throw new UnsupportedOperationException();
+    }
 }
 

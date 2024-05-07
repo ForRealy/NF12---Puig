@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TUI{
+public class TUI {
     static Scanner sc = new Scanner(System.in);
 
     public void gameMenu() {
@@ -11,15 +11,25 @@ public class TUI{
         System.out.println("4. Sortir");
     }
 
-    public void newGame() {}
+    public void newGame() {
+        throw new UnsupportedOperationException();
+    }
 
-    public void saveGame() {}
+    public void saveGame() {
+        throw new UnsupportedOperationException();
+    }
 
-    public void configure() {}
+    public void configure() {
+        throw new UnsupportedOperationException();
+    }
 
-    public void exitGame() {}
+    public void exitGame() {
+        throw new UnsupportedOperationException();
+    }
 
-    public void errorGame() {}
+    public void errorGame() {
+        throw new UnsupportedOperationException();
+    }
 
     public void mostrarMenu() {
         while (true) {
@@ -29,7 +39,8 @@ public class TUI{
 
             switch (option) {
                 case 1:
-                    System.out.println("Has seleccionat Nova partida.");;
+                    System.out.println("Has seleccionat Nova partida.");
+                    ;
                     break;
                 case 2:
                     System.out.println("Has seleccionat Carregar partida.");
@@ -43,14 +54,22 @@ public class TUI{
                 default:
                     System.out.println("Opció invàlida. Torna a intentar.");
                     break;
-                }
             }
         }
-    public void mostrarTaulell() {}
-
-    public void recollirJugada() {}
-
-    public void fiDePartida() {}
     }
+
+    public void mostrarTaulell() {
+        throw new UnsupportedOperationException();
+
+    }
+
+    public void recollirJugada() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void fiDePartida() {
+        throw new UnsupportedOperationException();
+    }
+}
 
 
