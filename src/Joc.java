@@ -3,15 +3,18 @@ public class Joc {
         return taulell;
     }
 
-    char taulell = 1;
+    private char taulell;
 
     public short getTorn() {
         return torn;
     }
 
-    short torn;
+    private short torn;
 
-    public static void novaPartida(){}
-    public static void jugar(){}
-    public static void jugadaGuanyadora(){}
+    public void novaPartida(){
+        torn = 1;
+    }
+    public void jugar(){}
+    public void jugadaGuanyadora(){}
 }
+
