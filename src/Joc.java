@@ -6,9 +6,11 @@ public class Joc {
     }
 
     private char taulell;
+        private static char[][] tablero = new char[3][3];
+
 
     public short getTorn() {
-        return torn;
+        private  char jugadorActual = '1';
     }
 
     private short torn;
