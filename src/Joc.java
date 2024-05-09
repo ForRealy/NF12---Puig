@@ -9,6 +9,7 @@ public class Joc {
         private static char[][] tablero = new char[3][3];
 
 
+
     public short getTorn() {
         private  char jugadorActual = '1';
     }
