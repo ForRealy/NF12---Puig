@@ -2,7 +2,6 @@ public class Joc {
     public char[][] getTablero() {
         return tablero;
     }
-
     public int getTurno() {
         return turno;
     }
