@@ -1,75 +1,49 @@
 import java.util.Scanner;
 
 public class TUI {
-    static Scanner sc = new Scanner(System.in);
+    private Scanner scanner;
 
-    public void gameMenu() {
-        System.out.println("Benvingut al joc!");
-        System.out.println("1. Nova partida");
-        System.out.println("2. Carregar partida");
-        System.out.println("3. Configuració");
-        System.out.println("4. Sortir");
+    public TUI() {
+        scanner = new Scanner(System.in);
     }
 
-    public void newGame() {
-        throw new UnsupportedOperationException();
+    public int mostrarMenu() {
+        System.out.println("Menú:");
+        System.out.println("1. Nueva Partida");
+        System.out.println("2. Cargar Partida");
+        System.out.println("3. Configuración");
+        System.out.println("4. Salir");
+        System.out.print("Elige una opción: ");
+        return Integer.parseInt(scanner.nextLine());
     }
 
-    public void saveGame() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void configure() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void exitGame() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void errorGame() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void mostrarMenu() {
-        while (true) {
-            gameMenu();
-            System.out.print("Selecciona una opció: ");
-            int option = sc.nextInt();
-
-            switch (option) {
-                case 1:
-                    System.out.println("Has seleccionat Nova partida.");
-                    ;
-                    break;
-                case 2:
-                    System.out.println("Has seleccionat Carregar partida.");
-                    break;
-                case 3:
-                    System.out.println("Has seleccionat Configuració.");
-                    break;
-                case 4:
-                    System.out.println("Has seleccionat Sortir. Fins aviat!");
-                    break;
-                default:
-                    System.out.println("Opció invàlida. Torna a intentar.");
-                    break;
+    public void mostrarTaulell(char[][] tablero, int turno) {
+        System.out.println("Tablero:");
+        // Mostrar el tablero
+        for (int i = 0; i < tablero.length; i++) {
+            for (int j = 0; j < tablero[i].length; j++) {
+                System.out.print("[" + tablero[i][j] + "] ");
             }
+            System.out.println();
+        }
+        // Mostrar el turno del jugador actual
+        System.out.println("Turno del jugador: " + turno);
+    }
+
+    public int[] recollirJugada() {
+        int[] jugada = new int[2];
+        System.out.print("Introduce la fila: ");
+        jugada[0] = Integer.parseInt(scanner.nextLine());
+        System.out.print("Introduce la columna: ");
+        jugada[1] = Integer.parseInt(scanner.nextLine());
+        return jugada;
+    }
+
+    public void fiDePartida(int ganador) {
+        if (ganador == 0) {
+            System.out.println("La partida ha terminado en empate.");
+        } else {
+            System.out.println("El jugador " + ganador + " ha ganado la partida.");
         }
     }
-
-    public void mostrarTaulell() {
-        throw new UnsupportedOperationException();
-
-    }
-
-    public void recollirJugada() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void fiDePartida() {
-        throw new UnsupportedOperationException();
-    }
 }
-
-
