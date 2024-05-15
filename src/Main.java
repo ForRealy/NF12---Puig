@@ -5,47 +5,63 @@ public class Main {
         Joc joc = new Joc();
 
         // Mostrar el menú y gestionar las opciones
-        int opcion = 0;
-        boolean jugar = false;
+        int opcion;
         do {
-            if (!jugar) {
-                opcion = tui.mostrarMenu();
-                switch (opcion) {
-                    case 1:
-                        novaPartida(joc, tui);
-                        jugar = true;
-                        break;
-                    case 2:
-                        carregarPartida(joc, tui);
-                        break;
-                    case 3:
-                        configuracio(tui);
-                        break;
-                    case 4:
-                        sortir();
-                        break;
-                    default:
-                        System.out.println("Opción no válida. Por favor, intenta de nuevo.");
-                }
-            } else {
-                // Si estamos jugando, solo mostramos el tablero y recogemos la jugada
-                tui.mostrarTaulell(joc.getTablero(), joc.getTurno());
-                int[] jugada = tui.recollirJugada();
-                // Aquí podríamos agregar lógica para jugar la jugada y verificar si hay un ganador
-                // Por ahora, simplemente cambiamos de turno
-                joc.jugar(jugada[0], jugada[1]);
-                // Si hay un ganador o la partida termina en empate, dejamos de jugar
-                if (joc.jugadaGuanyadora(jugada[0], jugada[1]) || partidaEmpatada(joc)) {
-                    jugar = false;
-                }
+            opcion = tui.mostrarMenu();
+            switch (opcion) {
+                case 1:
+                    novaPartida(joc, tui);
+                    break;
+                case 2:
+                    carregarPartida(joc, tui);
+                    break;
+                case 3:
+                    configuracio(tui);
+                    break;
+                case 4:
+                    sortir();
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, intenta de nuevo.");
             }
         } while (opcion != 4);
     }
 
     private static void novaPartida(Joc joc, TUI tui) {
-        // Iniciar una nueva partida
         joc.novaPartida();
-        // Aquí podríamos agregar más lógica relacionada con la nueva partida
+        boolean partidaEnCurso = true;
+        int turnoActual = 1; // Comenzar con el jugador 1
+
+        while (partidaEnCurso) {
+            tui.mostrarTaulell(joc.getTablero(), turnoActual);
+            int[] jugada = tui.recollirJugada();
+            joc.jugar(jugada[0], jugada[1]);
+
+            // Verificar si la jugada es ganadora
+            if (joc.jugadaGuanyadora(jugada[0], jugada[1])) {
+                tui.mostrarTaulell(joc.getTablero(), turnoActual);
+                tui.fiDePartida(turnoActual);
+                partidaEnCurso = false;
+            } else if (tableroLleno(joc.getTablero())) {
+                tui.mostrarTaulell(joc.getTablero(), turnoActual);
+                tui.fiDePartida(0); // Empate
+                partidaEnCurso = false;
+            } else {
+                // Cambiar el turno
+                turnoActual = (turnoActual == 1) ? 2 : 1;
+            }
+        }
+    }
+
+    private static boolean tableroLleno(char[][] tablero) {
+        for (int i = 0; i < tablero.length; i++) {
+            for (int j = 0; j < tablero[i].length; j++) {
+                if (tablero[i][j] == ' ') {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private static void carregarPartida(Joc joc, TUI tui) {
@@ -61,10 +77,5 @@ public class Main {
     private static void sortir() {
         System.out.println("Saliendo de la aplicación...");
         System.exit(0);
-    }
-
-    private static boolean partidaEmpatada(Joc joc) {
-        // Aquí podrías implementar la lógica para verificar si la partida termina en empate
-        return false; // Por ahora, siempre devolvemos falso
     }
 }
