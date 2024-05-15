@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class TUI {
@@ -33,9 +34,9 @@ public class TUI {
     public int[] recollirJugada() {
         int[] jugada = new int[2];
         System.out.print("Introduce la fila: ");
-        jugada[0] = Integer.parseInt(scanner.nextLine());
+        jugada[0] = Integer.parseInt(scanner.nextLine())-1;
         System.out.print("Introduce la columna: ");
-        jugada[1] = Integer.parseInt(scanner.nextLine());
+        jugada[1] = Integer.parseInt(scanner.nextLine())-1;
         return jugada;
     }
 
