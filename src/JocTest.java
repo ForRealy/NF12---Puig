@@ -1,27 +1,42 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class JocTest {
 
+    private Joc juego; // Declara una instancia del juego
+
+    @BeforeEach
+    public void setUp() {
+        juego = new Joc(); // Inicializa el juego antes de cada prueba
+    }
+
     @Test
-    public void testJugarColocaFichaEnPrimeraCasilla() {
-        Joc juego = new Joc(); // Crear una instancia del juego
-        juego.novaPartida(); // Iniciar una nueva partida
+    public void testNovaPartidaGeneraTableroVacio() {
+        // Llama a la función novaPartida
+        juego.novaPartida();
 
-        // Obtener el tablero y el turno actual
+        // Obtener el tablero
         char[][] tablero = juego.getTablero();
-        int turno = juego.getTurno();
 
-        // Realizar las aserciones necesarias
-        // Por ejemplo, asumamos que quieres asegurarte de que el tablero esté vacío al inicio del juego
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero[i].length; j++) {
-                assertEquals(' ', tablero[i][j]); // Comprobar que todas las casillas estén vacías
+        // Verificar que todas las casillas estén vacías
+        for (char[] chars : tablero) {
+            for (char aChar : chars) {
+                assertEquals(' ', aChar);
             }
         }
+    }
 
-        // Asumamos que quieres asegurarte de que el turno inicial sea 1
+    @Test
+    public void testNovaPartidaIniciaTurnoJugador1() {
+        // Llama a la función novaPartida
+        juego.novaPartida();
+
+        // Obtener el turno actual
+        int turno = juego.getTurno();
+
+        // Verificar que el turno sea del jugador 1
         assertEquals(1, turno);
     }
 }
